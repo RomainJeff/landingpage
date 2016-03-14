@@ -23,6 +23,9 @@ $(function () {
                 i++;
             });
         }, 200);
+
+        // Analytics
+        ga('send', 'event', 'about', 'open');
     });
 
     // Close side content
@@ -31,11 +34,18 @@ $(function () {
         $('#about-content').removeClass('active');
         $('#home').removeClass('active');
         $('.work .item').removeClass('active');
+
+        // Analytics
+        ga('send', 'event', 'about', 'close');
     });
 
     // projects
     $('[data-url]').on('click', function () {
         var url = $(this).attr('data-url');
+        
+        // Analytics
+        ga('send', 'event', 'project', 'open', url);
+
         var win = window.open(url, '_blank');
         win.focus();
     });
