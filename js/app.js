@@ -32,4 +32,11 @@ $(function () {
         $('#home').removeClass('active');
         $('.work .item').removeClass('active');
     });
+
+    // projects
+    $('[data-url]').on('click', function () {
+        var url = $(this).attr('data-url');
+        var win = window.open(url, '_blank');
+        win.focus();
+    });
 });
