@@ -1,0 +1,130 @@
+#about-overlay {
+    cursor: pointer;
+
+    &:hover {
+        background: rgba(0,0,0,0.2);
+    }
+}
+
+#about-content {
+    overflow: auto;
+    z-index: 3;
+    width: 600px;
+    background: white;
+    position: fixed;
+    top: 0; bottom: 0;
+    right: 0;
+    @include transform(translateX(calc(100% + 600px)));
+    @include transition-duration(500ms);
+    color: #000;
+    @include box-sizing(border-box);
+
+    &.active {
+        @include transform(translateX(0));
+    }
+
+    .description {
+        padding: 30px;
+        @include box-sizing(border-box);
+        width: 100%;
+
+        p {
+            line-height: 20px;
+            margin-bottom: 15px;
+        }
+
+        .links {
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+    }
+
+    .title {
+        font-size: 40px;
+        font-family: "Lora";
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+
+    .work {
+        margin-top: -15px;
+
+        .item {
+            width: 90%;
+            margin-left: 5%;
+            min-height: 200px;
+            background: red;
+            position: relative;
+            cursor: pointer;
+            margin-bottom: 2px;
+            @include transition-duration(250ms);
+            @include transform(translateY(20px));
+            opacity: 0;
+
+            &.active {
+                @include transform(translateX(0));
+                opacity: 1;
+                @include animation(itemFade 1s);
+            }
+
+            &:hover {
+                margin-left: 0;
+                width: 100%;
+
+                .content {
+                    padding-left: 60px;
+                }
+            }
+
+            .content {
+                position: absolute;
+                top: 0; left: 0;
+                right: 0; bottom: 0;
+                background: rgba(0, 0, 0, 0.9);
+                @include box-sizing(border-box);
+                padding: 30px;
+                color: white;
+                @include transition-duration(250ms);
+
+                h3 {
+                    margin-top: 10px;
+                    font-size: 25px;
+                    margin-bottom: 15px;
+                }
+
+                p {
+                    margin-bottom: 55px;
+                    color: #4b4b4b;
+
+                    &.tech {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+
+    .credit {
+        font-size: 13px;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.3);
+        margin-top: 30px;
+        margin-bottom: 15px;
+
+        a {
+            color: rgba(0, 0, 0, 0.4);
+        }
+    }
+}
+
+@include keyframes(itemFade) {
+    0% {
+        @include transform(translateY(20px));
+        opacity: 0;
+    }
+
+    100% {
+        @include transform(translateY(0px));
+        opacity: 1;
+    }
+}

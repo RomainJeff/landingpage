@@ -1,0 +1,111 @@
+@font-face {
+    font-family: 'MaisonNeue-Bold';
+    src: url(../fonts/MaisonNeueWEB-Bold.woff) format('woff');
+}
+@font-face {
+    font-family: 'MaisonNeue-Demi';
+    src: url(../fonts/MaisonNeueWEB-Demi.woff) format('woff');
+}
+@font-face {
+    font-family: 'MaisonNeue-Book';
+    src: url(../fonts/MaisonNeueWEB-Book.woff) format('woff');
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background: url('../img/background.jpeg') top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: antialiased;
+    font-family: "Lora", "Helvetica Neue", sans-serif;
+}
+
+b {
+    font-weight: bold;
+}
+
+.container {
+    width: 500px;
+}
+
+.button-container {
+    @include transition-duration(1000ms);
+    @include transition-delay(200ms);
+    opacity: 0;
+    @include transform(translateY(20px));
+}
+
+.button {
+    font-family: "MaisonNeue-Bold";
+    font-weight: bold;
+    color: white;
+    border: solid 2px white;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 13px;
+    position: relative;
+    @include transition-duration(250ms);
+
+    &:hover {
+        color: #000;
+
+        &::before,
+        &::after {
+            width: 50%;
+        }
+    }
+
+    &::after,
+    &::before {
+        position: absolute;
+        width: 0%;
+        top: 0;
+        z-index: -1;
+        height: 100%;
+        background: white;
+        @include transition-duration(200ms);
+    }
+
+    &::after {
+        content: "";
+        left: 50%;
+    }
+
+    &::before {
+        content: "";
+        right: 50%;
+    }
+
+    &.reverse {
+        color: #000;
+        border-color: #000;
+
+        &:hover {
+            color: #fff;
+        }
+
+        &::before,
+        &::after {
+            background: #000;
+        }
+    }
+
+    &.faded {
+        opacity: 0.2;
+        border-color: transparent;
+
+        &::before,
+        &::after {
+            background: transparent !important;
+        }
+
+        &:hover {
+            opacity: 0.8;
+            color: #000 !important;
+        }
+    }
+}
