@@ -8,6 +8,7 @@
 
 #about-content {
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
     z-index: 3;
     width: 600px;
     background: white;
