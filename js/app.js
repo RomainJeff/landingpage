@@ -49,4 +49,12 @@ $(function () {
         var win = window.open(url, '_blank');
         win.focus();
     });
+
+    // links
+    $('a').on('click', function () {
+        var url = $(this).attr('href');
+
+        // Analytics
+        ga('send', 'event', 'link', 'click', url);
+    })
 });
